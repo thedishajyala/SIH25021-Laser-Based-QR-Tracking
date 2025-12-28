@@ -1,31 +1,63 @@
-# SIH25021 – Laser-Based QR Code Marking System for Indian Railways
+# QR Manufacturing System with AI Alert Intelligence
 
-Smart India Hackathon 2025 | Laser-based QR code marking &amp; AI-enabled tracking for Indian Railways
+A comprehensive railway QR code manufacturing system with integrated AI-powered alert management for component monitoring, predictive maintenance, and automated notifications.
 
-## 📌 Problem Statement
+## 🚀 Quick Start - Single Command Deployment
 
-Indian Railways procures track fittings such as elastic rail clips, rail pads, liners, and sleepers
-in very large quantities every year. Currently, there is no permanent and unique identification
-mechanism to track these components throughout their lifecycle.
+Run the entire system with one command:
 
-This lack of traceability affects:
-- Quality control and inspections
-- Warranty and batch tracking
-- Performance monitoring during service life
-- Inventory and maintenance planning
+```bash
+./run_services.sh
+```
 
-## 🎯 Objective
+This starts all services including:
+- **Combined Backend Service** (Port 5002) - Main API with integrated AI alerts
+- **Engraving Service** (Port 8004) - Laser engraving control
+- **AI Alert System** - Predictive analytics and smart notifications
 
-To design and implement a **laser-based QR code marking system** integrated with **AI-driven analytics**
-that enables unique identification, lifecycle tracking, and quality monitoring of railway track
-fittings under real-world operating conditions.
+## 🤖 AI Alert System Features
 
-## 💡 Proposed Solution
+### Intelligent Alert Types
+- **Expiry Warnings** - Component lifecycle management
+- **Safety Alerts** - Critical safety notifications  
+- **Maintenance Alerts** - Predictive maintenance scheduling
+- **Inventory Alerts** - Stock level monitoring
+- **Compliance Alerts** - Regulatory compliance tracking
+- **Performance Alerts** - System performance monitoring
 
-The proposed solution uses **laser-etched QR codes** permanently marked on track fittings.
-Each QR code represents a unique identifier linked to a centralized backend system.
+### Machine Learning Capabilities
+- **Random Forest Algorithm** - For predictive analytics
+- **Isolation Forest** - For anomaly detection
+- **Priority Classification** - 5-level priority system (Critical to Low)
+- **Smart Recommendations** - Automated action suggestions
 
-- Field personnel can scan the QR code using a mobile device
-- Manufacturing, inspection, and maintenance data is retrieved instantly
-- AI modules analyze historical data to detect anomalies and performance issues
-- The system integrates with existing Indian Railways platforms such as UDM and TMS
+### API Endpoints
+- `GET /ai-alerts/list` - List all alerts
+- `POST /ai-alerts/generate` - Generate new alerts for UID
+- `POST /ai-alerts/{id}/acknowledge` - Acknowledge alerts
+- `POST /ai-alerts/{id}/resolve` - Resolve alerts
+- `GET /ai-alerts/summary` - Alert summary and statistics
+
+## 🏗️ System Architecture
+
+```
+┌─────────────────────┐    ┌──────────────────────┐    ┌─────────────────────┐
+│   React Frontend    │    │  Combined Backend    │    │  Engraving Service  │
+│   (Port 3000)       │◄──►│    (Port 5002)       │◄──►│    (Port 8004)      │
+│                     │    │                      │    │                     │
+│ • Dashboard         │    │ • QR Generation      │    │ • Laser Control     │
+│ • AI Alert UI       │    │ • AI Alert System    │    │ • Pattern Engraving │
+│ • Analytics         │    │ • Inventory Mgmt     │    │ • Safety Monitoring │
+│ • Management        │    │ • Analytics Engine   │    │                     │
+└─────────────────────┘    └──────────────────────┘    └─────────────────────┘
+                                      │
+                                      ▼
+                           ┌─────────────────────┐
+                           │   MySQL Database    │
+                           │                     │
+                           │ • QR Codes          │
+                           │ • AI Alerts         │
+                           │ • Inventory Items   │
+                           │ • Analytics Data    │
+                           └─────────────────────┘
+```
